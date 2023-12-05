@@ -50,7 +50,7 @@ describe('Text file preview hooks', () => {
           [[cb, prereqs]] = useEffect.mock.calls;
         };
         it('calls fetchFile method, predicated on setContent, url, and callbacks', () => {
-          jest.spyOn(hooks, hookKeys.fetchFile).mockImplementationOnce(() => {});
+          jest.spyOn(hooks, hookKeys.fetchFile).mockImplementationOnce(() => { });
           loadHook();
           expect(useEffect).toHaveBeenCalled();
           expect(prereqs).toEqual([
@@ -81,13 +81,13 @@ describe('Text file preview hooks', () => {
         });
       });
       describe('onError', () => {
-        it('calls get on the passed url when it changes', async (done) => {
+        it('calls get on the passed url when it changes', async () => {
           axios.get.mockReturnValueOnce(Promise.reject(
             { response: { status: testValue } },
           ));
           await hooks.fetchFile({ ...props, setContent: state.setState.content });
           expect(props.onError).toHaveBeenCalledWith(testValue);
-          done();
+
         });
       });
     });
