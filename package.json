@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/edx/frontend-app-ora-grading.git"
   },
+  "browserslist": [
+    "extends @edx/browserslist-config"
+  ],
   "scripts": {
     "build": "fedx-scripts webpack",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
@@ -15,7 +18,8 @@
     "start": "fedx-scripts webpack-dev-server --progress",
     "test": "TZ=GMT fedx-scripts jest --coverage --passWithNoTests",
     "watch-tests": "jest --watch",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "replace-variables": "paragon replace-variables -p src -t usage"
   },
   "author": "edX",
   "license": "AGPL-3.0",
@@ -25,10 +29,10 @@
   },
   "dependencies": {
     "@edx/brand": "npm:@edx/brand-edx.org@^2.0.3",
-    "@edx/frontend-component-footer": "^11.1.1",
-    "@edx/frontend-component-header": "^3.1.1",
-    "@edx/frontend-platform": "^2.5.1",
-    "@edx/paragon": "^19.9.0",
+    "@edx/frontend-component-footer": "npm:@edunext/frontend-component-footer@13.0.0-alpha.5",
+    "@edx/frontend-component-header": "npm:@edunext/frontend-component-header@5.0.0-alpha.5",
+    "@edx/frontend-platform": "npm:@edunext/frontend-platform@3.7.0-alpha.14",
+    "@edx/paragon": "22.0.0-alpha.13",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
@@ -73,7 +77,8 @@
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
-    "@edx/frontend-build": "12.4",
+    "@edx/browserslist-config": "1.2.0",
+    "@edx/frontend-build": "github:edunext/frontend-build#ednx-release/css-variables",
     "@edx/reactifex": "^2.1.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
