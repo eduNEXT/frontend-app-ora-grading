@@ -6,9 +6,6 @@
     "type": "git",
     "url": "git+https://github.com/edx/frontend-app-ora-grading.git"
   },
-  "browserslist": [
-    "extends @edx/browserslist-config"
-  ],
   "scripts": {
     "build": "fedx-scripts webpack",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
