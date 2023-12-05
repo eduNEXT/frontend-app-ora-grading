@@ -1,3 +1,4 @@
+/* eslint-disable no-import-assign */
 import * as zip from '@zip.js/zip.js';
 import FileSaver from 'file-saver';
 

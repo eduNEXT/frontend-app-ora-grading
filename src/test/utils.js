@@ -1,3 +1,4 @@
+/* eslint-disable no-promise-executor-return */
 export const mockSuccess = (returnValFn) => (...args) => (
   new Promise((resolve) => resolve(returnValFn(...args)))
 );

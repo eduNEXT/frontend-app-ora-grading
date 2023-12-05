@@ -1,3 +1,4 @@
+/* eslint-disable no-import-assign */
 import { actions, selectors } from 'data/redux';
 import { ErrorStatuses, RequestKeys } from 'data/constants/requests';
 import * as thunkActions from './grading';

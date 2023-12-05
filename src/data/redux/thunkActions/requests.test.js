@@ -1,3 +1,4 @@
+/* eslint-disable no-import-assign */
 import { actions } from 'data/redux';
 import { RequestKeys } from 'data/constants/requests';
 import api from 'data/services/lms/api';

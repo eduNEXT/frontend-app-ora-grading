@@ -87,7 +87,6 @@ describe('Text file preview hooks', () => {
           ));
           await hooks.fetchFile({ ...props, setContent: state.setState.content });
           expect(props.onError).toHaveBeenCalledWith(testValue);
-
         });
       });
     });

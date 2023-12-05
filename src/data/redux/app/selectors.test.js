@@ -1,3 +1,4 @@
+/* eslint-disable no-import-assign */
 import { feedbackRequirement } from 'data/services/lms/constants';
 
 import { keyStore } from '../../../utils';
