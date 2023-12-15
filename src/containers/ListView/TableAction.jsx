@@ -23,7 +23,7 @@ TableAction.defaultProps = {
 };
 TableAction.propTypes = {
   tableInstance: PropTypes.shape({
-    rows: PropTypes.arrayOf(PropTypes.object),
+    rows: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   handleClick: PropTypes.func.isRequired,
 };

@@ -20,7 +20,7 @@ SelectedBulkAction.defaultProps = {
   selectedFlatRows: [],
 };
 SelectedBulkAction.propTypes = {
-  selectedFlatRows: PropTypes.arrayOf(PropTypes.object),
+  selectedFlatRows: PropTypes.arrayOf(PropTypes.shape({})),
 
   handleClick: PropTypes.func.isRequired,
 };

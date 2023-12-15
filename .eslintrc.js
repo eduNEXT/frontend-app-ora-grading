@@ -7,6 +7,7 @@ const config = createConfig('eslint', {
     'import/no-self-import': 'off',
     'spaced-comment': ['error', 'always', { 'block': { 'exceptions': ['*'] } }],
     'react-hooks/rules-of-hooks': 'off',
+    'import/no-cycle': 'off',
   },
 });
 

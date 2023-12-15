@@ -33,6 +33,7 @@ export class RadioCriterion extends React.Component {
       isInvalid,
     } = this.props;
     return (
+      // eslint-disable-next-line react/jsx-no-useless-fragment
       <>
         <Form.RadioSet name={config.name} value={data}>
           {config.options.map((option) => (
