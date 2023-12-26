@@ -36,6 +36,7 @@
     "@openedx/paragon": "21.11.3",
     "@redux-beacon/segment": "^1.1.0",
     "@reduxjs/toolkit": "^1.6.1",
+    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.0.0",
     "@zip.js/zip.js": "^2.4.6",
     "axios": "^0.28.0",
