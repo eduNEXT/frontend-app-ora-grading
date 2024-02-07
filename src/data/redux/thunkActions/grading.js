@@ -47,6 +47,7 @@ export const loadSelectionForReview = (
       dispatch(actions.app.setShowReview(true));
     }
     dispatch(module.loadSubmission(submissionUUIDParam));
+    dispatch(module.loadTurnitinViewers());
   }
 };
 
@@ -65,6 +66,21 @@ export const loadSubmission = (submissionUUIDParam = undefined) => (dispatch, ge
         dispatch(actions.grading.startGrading({ lockStatus, gradeData }));
       }
     },
+  }));
+};
+
+export const loadTurnitinViewers = () => (dispatch, getState) => {
+  const submissionUUID = selectors.grading.selected.submissionUUID(getState());
+  dispatch(requests.fetchTurnitinViewers({
+    submissionUUID, courseId: selectors.app.courseId(getState()),
+    onSuccess: (response) => {
+      dispatch(actions.grading.loadTurnitinViewers(response));
+    },
+    onFailure: (error) => {
+      if (error.response.status === ErrorStatuses.notFound) {
+        dispatch(actions.grading.loadTurnitinViewers([]));
+      }
+    }
   }));
 };
 

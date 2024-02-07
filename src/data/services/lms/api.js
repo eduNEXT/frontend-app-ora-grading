@@ -56,6 +56,17 @@ const fetchSubmission = (submissionUUID) => get(
 ).then(response => response.data);
 
 /**
+ * get(':courseId/api/v1/viewer-url/:submissionUUID')
+ * @return {
+ *  url: <string>
+ *  file_name: <string>
+ * }
+ */
+const fetchTurnitinViewers = (submissionUUID, courseId) => get(
+  stringifyUrl(`${urls.fetchTurnitinViewersUrl()}/${courseId}/api/v1/viewer-url/${submissionUUID}/`)
+).then(response => response.data);
+
+/**
  * get('/api/submission/files', { oraLocation, submissionUUID })
  * @return {
  *     response: { files: [{}], text: <html> },
@@ -164,4 +175,5 @@ export default StrictDict({
   getFeedbackToList,
   unlockSubmission,
   batchUnlockSubmissions,
+  fetchTurnitinViewers,
 });
