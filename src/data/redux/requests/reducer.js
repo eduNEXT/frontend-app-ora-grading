@@ -13,6 +13,7 @@ const initialState = {
   [RequestKeys.prefetchNext]: { status: RequestStates.inactive },
   [RequestKeys.prefetchPrev]: { status: RequestStates.inactive },
   [RequestKeys.submitGrade]: { status: RequestStates.inactive },
+  [RequestKeys.fetchTurnitinViewers]: { status: RequestStates.inactive },
 };
 
 // eslint-disable-next-line no-unused-vars
