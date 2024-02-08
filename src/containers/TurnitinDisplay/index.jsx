@@ -11,6 +11,7 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
 import FileNameCell from './components/FileNameCell';
 import HyperlinkCell from './components/HyperlinkCell';
+import { selectors } from 'data/redux';
 
 
 /**
