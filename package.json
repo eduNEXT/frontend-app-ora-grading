@@ -34,8 +34,10 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@openedx/paragon": "^22.1.1",
     "@redux-beacon/segment": "^1.1.0",
     "@reduxjs/toolkit": "^1.6.1",
+    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.0.0",
     "@zip.js/zip.js": "^2.4.6",
     "axios": "^0.28.0",
@@ -69,6 +71,7 @@
     "regenerator-runtime": "^0.14.0",
     "reselect": "^4.0.0",
     "util": "^0.12.4",
+    "uuid": "^9.0.1",
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
@@ -76,7 +79,7 @@
     "@edx/frontend-build": "13.0.1",
     "@edx/react-unit-test-utils": "1.7.1",
     "@edx/reactifex": "^2.1.1",
-    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "12.1.5",
     "axios-mock-adapter": "^1.20.0",
     "fetch-mock": "^9.11.0",
