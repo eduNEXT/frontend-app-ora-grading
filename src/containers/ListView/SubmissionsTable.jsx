@@ -35,14 +35,16 @@ const problemSteps = {
  */
 export class SubmissionsTable extends React.Component {
   get gradeStatusOptions() {
-    return Object.keys(gradingStatuses).map(statusKey => ({
+    return Object.keys(gradingStatuses).map((statusKey) => ({
       name: this.translate(lmsMessages[gradingStatuses[statusKey]]),
       value: gradingStatuses[statusKey],
     }));
   }
 
   get userLabel() {
-    return this.translate(this.props.isIndividual ? messages.username : messages.teamName);
+    return this.translate(
+      this.props.isIndividual ? messages.username : messages.teamName,
+    );
   }
 
   get userAccessor() {
@@ -79,7 +81,7 @@ export class SubmissionsTable extends React.Component {
             key={stepProblem}
           >
             <StatusBadge
-              status={problemSteps[stepProblem] ? "graded" : "ungraded"}
+              status={problemSteps[stepProblem] ? 'graded' : 'ungraded'}
               title={this.translate(messages[stepProblem])}
             />
           </Button>
@@ -222,8 +224,8 @@ SubmissionsTable.propTypes = {
     }),
   })),
   loadSelectionForReview: PropTypes.func.isRequired,
-  setProblemStepsModal: actions.problemSteps.setOpenReviewModal,
-  setActiveSubmissionIndex: actions.grading.setActiveIndex,
+  setProblemStepsModal: PropTypes.func.isRequired,
+  setActiveSubmissionIndex: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = (state) => ({

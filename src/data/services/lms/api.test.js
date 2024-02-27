@@ -19,7 +19,6 @@ jest.mock('data/constants/app', () => ({
 const gradeData = 'test-grade-data';
 const submissionUUID = 'test-submission-uuid';
 const submissionUUIDs = ['some', 'submission', 'uuid'];
-const assessmentType = 'received';
 
 const methodKeys = StrictDict({
   get: 'get',
@@ -151,9 +150,22 @@ describe('lms service api methods', () => {
       },
     });
   });
-  describe('getFeedbackList', () => {
+  describe('getFeedbackFromList', () => {
     testAPI({
-      promise: api.getFeedbackList(submissionUUID, assessmentType),
+      promise: api.getFeedbackFromList(submissionUUID),
+      method: methodKeys.get,
+      expected: {
+        urlKey: urlKeys.getFeedbackSubmissionsUrl,
+        urlParams: {
+          [paramKeys.oraLocation]: locationId(),
+          [paramKeys.submissionUUID]: submissionUUID,
+        },
+      },
+    });
+  });
+  describe('getFeedbackToList', () => {
+    testAPI({
+      promise: api.getFeedbackList(submissionUUID),
       method: methodKeys.get,
       expected: {
         urlKey: urlKeys.getFeedbackSubmissionsUrl,

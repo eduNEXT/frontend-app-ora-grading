@@ -4,6 +4,8 @@ import { useFeedbackList } from './hooks';
 
 jest.mock('data/services/lms/api', () => ({
   getFeedbackList: jest.fn(),
+  getFeedbackFromList: jest.fn(),
+  getFeedbackToList: jest.fn(),
 }));
 
 describe('ReviewProblemStepsContent hooks', () => {
@@ -13,14 +15,14 @@ describe('ReviewProblemStepsContent hooks', () => {
   describe('useFeedbackList', () => {
     const mockAssessments = [
       {
-        idAssessment: 1,
-        assesmentDate: '2024-01-01',
+        assessmentId: 1,
+        assessmentDate: '2024-01-01',
         scorerEmail: 'email@example.com',
         scorerName: 'John Doe',
         scorerUsername: 'johndoe123',
         feedback: 'Great work!',
         problemStep: 'Step 1',
-        assesmentScores: [
+        assessmentScores: [
           {
             criterionName: 'Criterion 1',
             scoreEarned: 8,
@@ -32,7 +34,7 @@ describe('ReviewProblemStepsContent hooks', () => {
 
     const expectedFormattedAssessments = [
       {
-        idAssessment: 1,
+        assessmentId: 1,
         reviewerName: 'John Doe',
         userName: 'johndoe123',
         email: 'email@example.com',
@@ -61,18 +63,18 @@ describe('ReviewProblemStepsContent hooks', () => {
 
     test('should change feedbackListType', async () => {
       const mockResponse = { assessments: mockAssessments };
-      api.getFeedbackList.mockResolvedValue(mockResponse);
+      api.getFeedbackFromList.mockResolvedValue(mockResponse);
 
       const { result, waitForNextUpdate } = renderHook(() => useFeedbackList('some-uuid'));
 
       act(() => result.current.setFeedbackListType('given'));
 
       await act(async () => {
-        result.current.getFeedbackListApi();
+        result.current.getFeedbackFromList();
         await waitForNextUpdate();
       });
 
-      expect(api.getFeedbackList).toHaveBeenCalledWith('some-uuid', 'given');
+      expect(api.getFeedbackFromList).toHaveBeenCalledWith('some-uuid');
       expect(result.current.isLoadingFeedbackList).toBe(false);
       expect(result.current.feedbackList).toEqual(expectedFormattedAssessments);
       expect(result.current.feedbackListError).toBeNull();
@@ -80,7 +82,7 @@ describe('ReviewProblemStepsContent hooks', () => {
 
     test('successful API call', async () => {
       const mockResponse = { assessments: mockAssessments };
-      api.getFeedbackList.mockResolvedValue(mockResponse);
+      api.getFeedbackFromList.mockResolvedValue(mockResponse);
 
       const { result, waitForNextUpdate } = renderHook(() => useFeedbackList('some-uuid'));
 
@@ -88,7 +90,7 @@ describe('ReviewProblemStepsContent hooks', () => {
         result.current.getFeedbackListApi();
       });
 
-      expect(api.getFeedbackList).toHaveBeenCalledWith('some-uuid', 'received');
+      expect(api.getFeedbackFromList).toHaveBeenCalledWith('some-uuid');
       expect(result.current.isLoadingFeedbackList).toBe(true);
       expect(result.current.feedbackList).toEqual([]);
       expect(result.current.feedbackListError).toBeNull();
@@ -98,7 +100,7 @@ describe('ReviewProblemStepsContent hooks', () => {
         await waitForNextUpdate();
       });
 
-      expect(api.getFeedbackList).toHaveBeenCalledWith('some-uuid', 'received');
+      expect(api.getFeedbackFromList).toHaveBeenCalledWith('some-uuid');
       expect(result.current.isLoadingFeedbackList).toBe(false);
       expect(result.current.feedbackList).toEqual(expectedFormattedAssessments);
       expect(result.current.feedbackListError).toBeNull();
@@ -106,7 +108,7 @@ describe('ReviewProblemStepsContent hooks', () => {
 
     test('fail API call', async () => {
       const mockError = new Error('Error fetching data');
-      api.getFeedbackList.mockRejectedValue(mockError);
+      api.getFeedbackFromList.mockRejectedValue(mockError);
 
       const { result, waitForNextUpdate } = renderHook(() => useFeedbackList('some-uuid'));
 
@@ -114,7 +116,7 @@ describe('ReviewProblemStepsContent hooks', () => {
         result.current.getFeedbackListApi();
       });
 
-      expect(api.getFeedbackList).toHaveBeenCalledWith('some-uuid', 'received');
+      expect(api.getFeedbackFromList).toHaveBeenCalledWith('some-uuid');
       expect(result.current.isLoadingFeedbackList).toBe(true);
       expect(result.current.feedbackListError).toBeNull();
 
@@ -123,7 +125,7 @@ describe('ReviewProblemStepsContent hooks', () => {
         await waitForNextUpdate();
       });
 
-      expect(api.getFeedbackList).toHaveBeenCalledWith('some-uuid', 'received');
+      expect(api.getFeedbackFromList).toHaveBeenCalledWith('some-uuid');
       expect(result.current.isLoadingFeedbackList).toBe(false);
       expect(result.current.feedbackListError).toBe('Error fetching data');
     });
@@ -139,7 +141,7 @@ describe('ReviewProblemStepsContent hooks', () => {
         expect(result.current.isLoadingFeedbackList).toBe(false);
       }, { timeout: 500 });
 
-      expect(api.getFeedbackList).not.toHaveBeenCalled();
+      expect(api.getFeedbackFromList).not.toHaveBeenCalled();
       expect(result.current.feedbackList).toEqual([]);
       expect(result.current.feedbackListError).toBeNull();
     });

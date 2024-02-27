@@ -209,7 +209,7 @@ describe('SubmissionsTable component', () => {
             expect(columns[3]).toEqual({
               Header: messages.learnerSubmissionDate.defaultMessage,
               accessor: submissionFields.dateSubmitted,
-              Cell: el.instance.children[0].props.columns[1].Cell,
+              Cell: el.instance.children[0].props.columns[3].Cell,
               disableFilters: true,
             });
           });
@@ -217,7 +217,7 @@ describe('SubmissionsTable component', () => {
             expect(columns[4]).toEqual({
               Header: messages.grade.defaultMessage,
               accessor: submissionFields.score,
-              Cell: el.instance.children[0].props.columns[2].Cell,
+              Cell: el.instance.children[0].props.columns[4].Cell,
               disableFilters: true,
             });
           });
@@ -225,10 +225,10 @@ describe('SubmissionsTable component', () => {
             expect(columns[5]).toEqual({
               Header: messages.gradingStatus.defaultMessage,
               accessor: submissionFields.gradingStatus,
-              Cell: el.instance.children[0].props.columns[3].Cell,
+              Cell: el.instance.children[0].props.columns[5].Cell,
               Filter: MultiSelectDropdownFilter,
               filter: 'includesValue',
-              filterChoices: el.instance.children[0].props.columns[3].filterChoices,
+              filterChoices: el.instance.children[0].props.columns[5].filterChoices,
             });
           });
         });
@@ -249,26 +249,26 @@ describe('SubmissionsTable component', () => {
             expect(columns[3]).toEqual({
               Header: messages.teamSubmissionDate.defaultMessage,
               accessor: submissionFields.dateSubmitted,
-              Cell: el.instance.children[0].props.columns[1].Cell,
+              Cell: el.instance.children[0].props.columns[3].Cell,
               disableFilters: true,
             });
           });
           test('grade column', () => {
-            expect(columns[2]).toEqual({
+            expect(columns[4]).toEqual({
               Header: messages.grade.defaultMessage,
               accessor: submissionFields.score,
-              Cell: el.instance.children[0].props.columns[2].Cell,
+              Cell: el.instance.children[0].props.columns[4].Cell,
               disableFilters: true,
             });
           });
           test('grading status column', () => {
-            expect(columns[3]).toEqual({
+            expect(columns[5]).toEqual({
               Header: messages.gradingStatus.defaultMessage,
               accessor: submissionFields.gradingStatus,
-              Cell: el.instance.children[0].props.columns[3].Cell,
+              Cell: el.instance.children[0].props.columns[5].Cell,
               Filter: MultiSelectDropdownFilter,
               filter: 'includesValue',
-              filterChoices: el.instance.children[0].props.columns[3].filterChoices,
+              filterChoices: el.instance.children[0].props.columns[5].filterChoices,
             });
           });
         });
@@ -395,24 +395,24 @@ describe('SubmissionsTable component', () => {
           const fakeDate = 16131215154955;
           const fakeDateString = 'test-date-string';
           const mock = jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue(fakeDateString);
-          expect(el.instance.children[0].props.columns[1].Cell({ value: fakeDate })).toEqual(fakeDateString);
+          expect(el.instance.children[0].props.columns[3].Cell({ value: fakeDate })).toEqual(fakeDateString);
           mock.mockRestore();
         });
       });
       describe('formatGrade method', () => {
         it('returns "-" if grade is null', () => {
-          expect(el.instance.children[0].props.columns[2].Cell({ value: null })).toEqual('-');
+          expect(el.instance.children[0].props.columns[4].Cell({ value: null })).toEqual('-');
         });
         it('returns <pointsEarned>/<pointsPossible> if grade exists', () => {
           expect(
-            el.instance.children[0].props.columns[2].Cell({ value: { pointsEarned: 1, pointsPossible: 10 } }),
+            el.instance.children[0].props.columns[4].Cell({ value: { pointsEarned: 1, pointsPossible: 10 } }),
           ).toEqual('1/10');
         });
       });
       describe('formatStatus method', () => {
         it('returns a StatusBadge with the given status', () => {
           const status = 'graded';
-          expect(el.instance.children[0].props.columns[3].Cell({ value: 'graded' })).toEqual(
+          expect(el.instance.children[0].props.columns[5].Cell({ value: 'graded' })).toEqual(
             <StatusBadge status={status} />,
           );
         });

@@ -25,7 +25,7 @@ export const statusVariants = StrictDict({
 /**
  * <StatusBadge />
  */
-export const StatusBadge = ({ className, status, title}) => {
+export const StatusBadge = ({ className, status, title }) => {
   if (!Object.keys(statusVariants).includes(status)) {
     return null;
   }

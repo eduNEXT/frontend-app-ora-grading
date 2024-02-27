@@ -4,14 +4,14 @@ describe('assessmentTableFormat', () => {
   test('formats assessment data correctly', () => {
     const inputAssessmentData = [
       {
-        idAssessment: 1,
-        assesmentDate: '2023-11-17',
+        assessmentId: 1,
+        assessmentDate: '2023-11-17',
         scorerEmail: 'scorer@example.com',
         scorerName: 'Scorer 1',
         scorerUsername: 'scorer1',
         feedback: 'Good work!',
         problemStep: 'Problem Step 1',
-        assesmentScores: [
+        assessmentScores: [
           { criterionName: 'Criterion 1', scoreEarned: 8, scoreType: 'High' },
           { criterionName: 'Criterion 2', scoreEarned: 6, scoreType: 'Medium' },
         ],
@@ -22,7 +22,7 @@ describe('assessmentTableFormat', () => {
 
     expect(formattedAssessmentData).toEqual([
       {
-        idAssessment: 1,
+        assessmentId: 1,
         reviewerName: 'Scorer 1',
         userName: 'scorer1',
         email: 'scorer@example.com',
