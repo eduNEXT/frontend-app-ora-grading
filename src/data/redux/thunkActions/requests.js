@@ -84,7 +84,7 @@ export const fetchTurnitinViewers = ({ submissionUUID, courseId, ...rest }) => (
     promise: api.fetchTurnitinViewers(submissionUUID, courseId),
     ...rest,
   }));
-}
+};
 
 /**
  * Tracked setLock api method.  tracked to the `setLock` request key.

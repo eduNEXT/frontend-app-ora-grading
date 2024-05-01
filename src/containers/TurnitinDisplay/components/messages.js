@@ -25,7 +25,7 @@ const messages = defineMessages({
     id: 'ora-grading.TurnitinDisplay.NoSimilarityReports',
     defaultMessage: 'No Turnitin Similarity Reports to show',
     description: 'Message to display when there are no Turnitin Similarity Reports to show',
-    },
+  },
   viewerURLExpired: {
     id: 'ora-grading.TurnitinDisplay.ViewerURLExpired',
     defaultMessage: 'The Similarity Report URLs have a very short lifespan (less than 1 minute) after which it will no longer be valid. Once a user has been redirected to this URL, they will be given a session that will last for 1 hour. When expired, please refresh the page to get a new URL.',
