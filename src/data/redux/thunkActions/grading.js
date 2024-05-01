@@ -64,7 +64,8 @@ export const loadSubmission = () => (dispatch, getState) => {
 export const loadTurnitinViewers = () => (dispatch, getState) => {
   const submissionUUID = selectors.grading.selected.submissionUUID(getState());
   dispatch(requests.fetchTurnitinViewers({
-    submissionUUID, courseId: selectors.app.courseId(getState()),
+    submissionUUID,
+    courseId: selectors.app.courseId(getState()),
     onSuccess: (response) => {
       dispatch(actions.grading.loadTurnitinViewers(response));
     },
@@ -72,7 +73,7 @@ export const loadTurnitinViewers = () => (dispatch, getState) => {
       if (error.response.status === ErrorStatuses.notFound) {
         dispatch(actions.grading.loadTurnitinViewers([]));
       }
-    }
+    },
   }));
 };
 

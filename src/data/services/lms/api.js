@@ -62,7 +62,7 @@ const fetchSubmission = (submissionUUID) => get(
  * }
  */
 const fetchTurnitinViewers = (submissionUUID, courseId) => get(
-  stringifyUrl(`${urls.fetchTurnitinViewersUrl()}/${courseId}/api/v1/viewer-url/${submissionUUID}/`)
+  stringifyUrl(`${urls.fetchTurnitinViewersUrl()}/${courseId}/api/v1/viewer-url/${submissionUUID}/`),
 ).then(response => response.data);
 
 /**
