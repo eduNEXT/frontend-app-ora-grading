@@ -7,6 +7,13 @@ exports[`ReviewContent component component render tests snapshot: failed, showRu
   <div
     className="content-wrapper"
   >
+    <Row
+      className="flex-nowrap my-3"
+    >
+      <Col>
+        <injectIntl(ShimmedIntlComponent) />
+      </Col>
+    </Row>
     <ReviewErrors />
   </div>
 </div>
@@ -19,6 +26,13 @@ exports[`ReviewContent component component render tests snapshot: hide rubric 1`
   <div
     className="content-wrapper"
   >
+    <Row
+      className="flex-nowrap my-3"
+    >
+      <Col>
+        <injectIntl(ShimmedIntlComponent) />
+      </Col>
+    </Row>
     <ReviewErrors />
     <Row
       className="flex-nowrap m-0"
@@ -41,6 +55,13 @@ exports[`ReviewContent component component render tests snapshot: show rubric 1`
   <div
     className="content-wrapper"
   >
+    <Row
+      className="flex-nowrap my-3"
+    >
+      <Col>
+        <injectIntl(ShimmedIntlComponent) />
+      </Col>
+    </Row>
     <ReviewErrors />
     <Row
       className="flex-nowrap m-0"
