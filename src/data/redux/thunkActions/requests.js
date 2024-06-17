@@ -78,6 +78,14 @@ export const fetchSubmission = ({ submissionUUID, ...rest }) => (dispatch) => {
   }));
 };
 
+export const fetchTurnitinViewers = ({ submissionUUID, courseId, ...rest }) => (dispatch) => {
+  dispatch(module.networkRequest({
+    requestKey: RequestKeys.fetchTurnitinViewers,
+    promise: api.fetchTurnitinViewers(submissionUUID, courseId),
+    ...rest,
+  }));
+};
+
 /**
  * Tracked setLock api method.  tracked to the `setLock` request key.
  * @param {string} submissionUUID - target submission id
@@ -125,4 +133,5 @@ export default StrictDict({
   fetchSubmissionStatus,
   setLock,
   submitGrade,
+  fetchTurnitinViewers,
 });
