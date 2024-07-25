@@ -13,6 +13,10 @@ module.exports = createConfig('jest', {
     'src/data/services/lms/fakeData', // don't unit test mock data
     'src/test', // don't unit test integration test utils
   ],
+  // see https://github.com/axios/axios/issues/5026
+  moduleNameMapper: {
+    '^axios$': 'axios/dist/axios.js',
+  },
   testTimeout: 120000,
   testEnvironment: 'jsdom',
 });
