@@ -17,6 +17,7 @@ export const RequestKeys = StrictDict({
   prefetchPrev: 'prefetchPrev',
   setLock: 'setLock',
   submitGrade: 'submitGrade',
+  fetchTurnitinViewers: 'fetchTurnitinViewers',
 });
 
 export const ErrorCodes = StrictDict({
