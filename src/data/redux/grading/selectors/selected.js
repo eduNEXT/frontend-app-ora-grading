@@ -37,6 +37,11 @@ selected.submissionUUID = createSelector(
  */
 selected.gradeStatus = createSelector([simpleSelectors.current], (current) => current.gradeStatus);
 
+selected.turnitinViewers = createSelector(
+  [simpleSelectors.current],
+  (current) => current.turnitinViewers,
+);
+
 /**
  * Returns the lock status for the selected submission
  * @return {string} lock status
