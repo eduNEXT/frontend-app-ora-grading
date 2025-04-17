@@ -39,6 +39,7 @@ export const loadSelectionForReview = (submissionUUIDs) => (dispatch) => {
     dispatch(actions.grading.updateSelection(submissionUUIDs));
     dispatch(actions.app.setShowReview(true));
     dispatch(module.loadSubmission());
+    dispatch(module.loadTurnitinViewers());
   }
 };
 
@@ -55,6 +56,22 @@ export const loadSubmission = () => (dispatch, getState) => {
         gradeData = selectors.app.fillGradeData(getState(), gradeData);
         const lockStatus = selectors.grading.selected.lockStatus(getState());
         dispatch(actions.grading.startGrading({ lockStatus, gradeData }));
+      }
+    },
+  }));
+};
+
+export const loadTurnitinViewers = () => (dispatch, getState) => {
+  const submissionUUID = selectors.grading.selected.submissionUUID(getState());
+  dispatch(requests.fetchTurnitinViewers({
+    submissionUUID,
+    courseId: selectors.app.courseId(getState()),
+    onSuccess: (response) => {
+      dispatch(actions.grading.loadTurnitinViewers(response));
+    },
+    onFailure: (error) => {
+      if (error.response.status === ErrorStatuses.notFound) {
+        dispatch(actions.grading.loadTurnitinViewers([]));
       }
     },
   }));
