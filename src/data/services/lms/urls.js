@@ -13,6 +13,7 @@ const fetchSubmissionStatusUrl = () => `${baseEsgUrl()}submission/status`;
 const fetchSubmissionLockUrl = () => `${baseEsgUrl()}submission/lock`;
 const batchUnlockSubmissionsUrl = () => `${baseEsgUrl()}submission/batch/unlock`;
 const updateSubmissionGradeUrl = () => `${baseEsgUrl()}submission/grade`;
+const fetchTurnitinViewersUrl = () => `${baseUrl()}/platform-plugin-turnitin`;
 
 const course = (courseId) => `${baseUrl()}/courses/${courseId}`;
 
@@ -30,6 +31,7 @@ export default StrictDict({
   fetchSubmissionLockUrl,
   batchUnlockSubmissionsUrl,
   updateSubmissionGradeUrl,
+  fetchTurnitinViewersUrl,
   baseUrl,
   course,
   openResponse,

@@ -199,6 +199,10 @@ const grading = createSlice({
         },
       };
     },
+    loadTurnitinViewers: (state, { payload }) => ({
+      ...state,
+      current: { ...state.current, turnitinViewers: payload },
+    }),
   },
 });
 

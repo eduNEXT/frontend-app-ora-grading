@@ -7,6 +7,7 @@ import { Col, Row } from '@openedx/paragon';
 import { selectors } from 'data/redux';
 import { RequestKeys } from 'data/constants/requests';
 
+import TurnitinDisplay from 'containers/TurnitinDisplay';
 import ResponseDisplay from 'containers/ResponseDisplay';
 import Rubric from 'containers/Rubric';
 import ReviewErrors from './ReviewErrors';
@@ -17,6 +18,11 @@ import ReviewErrors from './ReviewErrors';
 export const ReviewContent = ({ isFailed, isLoaded, showRubric }) => (isLoaded || isFailed) && (
 <div className="content-block">
   <div className="content-wrapper">
+    <Row className="flex-nowrap my-3">
+      <Col>
+        <TurnitinDisplay />
+      </Col>
+    </Row>
     <ReviewErrors />
     {isLoaded && (
     <Row className="flex-nowrap m-0">
